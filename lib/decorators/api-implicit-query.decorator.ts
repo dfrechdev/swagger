@@ -40,7 +40,9 @@ export const ApiImplicitQuery = (metadata: {
         type: 'String',
         enum: metadata.enum
       };
-      param.collectionFormat = 'multi';
+        param.collectionFormat = isNil(metadata.collectionFormat)
+            ? 'multi'
+            : metadata.collectionFormat;
       param.enum = undefined;
     } else {
       param.items = {
